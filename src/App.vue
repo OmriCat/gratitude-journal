@@ -1,30 +1,31 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import Inspiration from "./components/Inspiration.vue";
+import { ref } from "vue";
+
+const entryText = ref("");
+
+function saveEntry(event: Event) {
+  console.log(entryText.value);
+}
 </script>
 
 <template>
   <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
+    <h1>Gratitude Journal</h1>
   </header>
 
   <main>
-    <TheWelcome />
+    <Inspiration />
+    <div>
+      <input type="text" @change=""/>
+      <button @click="saveEntry">Save</button>
+    </div>
   </main>
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
-}
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
 }
 
 @media (min-width: 1024px) {
@@ -40,7 +41,7 @@ header {
 
   header .wrapper {
     display: flex;
-    place-items: flex-start;
+    place-items:;
     flex-wrap: wrap;
   }
 }
