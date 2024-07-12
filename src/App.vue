@@ -1,11 +1,16 @@
 <script setup lang="ts">
 import Inspiration from "./components/Inspiration.vue";
+import Entry from "./model/model.ts";
+import Entries from "./components/Entries.vue";
 import { ref } from "vue";
 
 const entryText = ref("");
+const repository = ref<Entry>([]);
 
-function saveEntry(event: Event) {
+function saveEntry() {
   console.log(entryText.value);
+  repository.value.push({ title: entryText.value, created_at: Date.now() });
+  entryText.value = "";
 }
 </script>
 
@@ -17,9 +22,10 @@ function saveEntry(event: Event) {
   <main>
     <Inspiration />
     <div>
-      <input type="text" @change=""/>
+      <input type="text" v-model.lazy.trim="entryText" />
       <button @click="saveEntry">Save</button>
     </div>
+    <Entries :entries="repository" />
   </main>
 </template>
 
@@ -35,13 +41,8 @@ header {
     padding-right: calc(var(--section-gap) / 2);
   }
 
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
   header .wrapper {
     display: flex;
-    place-items:;
     flex-wrap: wrap;
   }
 }
