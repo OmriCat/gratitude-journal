@@ -11,7 +11,7 @@ const entries = ref(loadData());
 const dateToDisplay = ref(LocalDate.now());
 
 const displayedEntries = computed(() =>
-  entries_with_date(entries.value, dateToDisplay.value)
+  entries_with_date(entries.value, dateToDisplay.value),
 );
 
 watchEffect(() => storeData(entries.value));
@@ -33,7 +33,13 @@ function saveEntry(e) {
   <main>
     <Inspiration />
     <div>
-      <input type="text" v-model.lazy.trim="entryText"  autofocus placeholder="What are you grateful for?" @keyup.enter="saveEntry"/>
+      <input
+        type="text"
+        v-model.lazy.trim="entryText"
+        autofocus
+        placeholder="What are you grateful for?"
+        @keyup.enter="saveEntry"
+      />
       <button @click="saveEntry">Save</button>
     </div>
     <Entries :entries="entries" />

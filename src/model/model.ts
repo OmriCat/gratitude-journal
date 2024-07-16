@@ -15,6 +15,6 @@ export class Entry {
 
 export function entries_with_date(entries: Entry[], date: LocalDate): Entry[] {
   return entries.filter((entry) =>
-    date.equals(LocalDate.ofInstant(entry.created_at))
+    date.equals(LocalDate.ofInstant(entry.created_at)),
   );
 }
