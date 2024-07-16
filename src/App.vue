@@ -1,16 +1,27 @@
 <script setup lang="ts">
 import Inspiration from "./components/Inspiration.vue";
-import Entry from "./model/model.ts";
+import { Entry, entries_with_date } from "./model/model.ts";
+import { loadData, storeData } from "./model/repository.ts";
 import Entries from "./components/Entries.vue";
-import { ref } from "vue";
+import { computed, ref, watchEffect } from "vue";
+import { Instant, LocalDate } from "@js-joda/core";
 
 const entryText = ref("");
-const repository = ref<Entry>([]);
+const entries = ref(loadData());
+const dateToDisplay = ref(LocalDate.now());
 
-function saveEntry() {
-  console.log(entryText.value);
-  repository.value.push({ title: entryText.value, created_at: Date.now() });
-  entryText.value = "";
+const displayedEntries = computed(() =>
+  entries_with_date(entries.value, dateToDisplay.value)
+);
+
+watchEffect(() => storeData(entries.value));
+
+function saveEntry(e) {
+  const value = entryText.value.trim();
+  if (value) {
+    entries.value.push(Entry.now(entryText.value));
+    entryText.value = "";
+  }
 }
 </script>
 
@@ -22,10 +33,10 @@ function saveEntry() {
   <main>
     <Inspiration />
     <div>
-      <input type="text" v-model.lazy.trim="entryText" />
+      <input type="text" v-model.lazy.trim="entryText"  autofocus placeholder="What are you grateful for?" @keyup.enter="saveEntry"/>
       <button @click="saveEntry">Save</button>
     </div>
-    <Entries :entries="repository" />
+    <Entries :entries="entries" />
   </main>
 </template>
 

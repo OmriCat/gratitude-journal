@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import Entry from "../model/model.ts";
-const props = defineProps<{entries: [Entry]}>();
+import { DateTimeFormatter, LocalDateTime } from "@js-joda/core";
+const props = defineProps<{ entries: Entry[] }>();
+
+const formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 </script>
 
 <template>
   <table>
     <tbody>
-    <tr v-for="entry of entries">
+      <tr v-for="entry of entries">
         <td>{{ entry.title }}</td>
-        <td>{{ entry.created_at }}</td>
-    </tr>
+        <td>
+          {{ LocalDateTime.ofInstant(entry.created_at).format(formatter) }}
+        </td>
+      </tr>
     </tbody>
   </table>
 </template>
