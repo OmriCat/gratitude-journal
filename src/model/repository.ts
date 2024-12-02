@@ -1,6 +1,6 @@
-import { Instant, LocalDateTime } from "@js-joda/core";
+import { Temporal } from "temporal-polyfill";
+import Instant = Temporal.Instant;
 import type { Entry } from "./model";
-import { Err, Result } from "ts-results";
 
 const STORAGE_KEY = "gratitude-journal";
 
@@ -11,7 +11,7 @@ export function loadData(): Entry[] {
   }
   const parsed = JSON.parse(data || "[]", (key, value) => {
     if (key === "created_at" && typeof value === "string") {
-      return Instant.parse(value);
+      return Instant.from(value);
     } else {
       return value;
     }

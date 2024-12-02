@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import Inspiration from "./components/Inspiration.vue";
-import { Entry, entries_with_date } from "./model/model.ts";
-import { loadData, storeData } from "./model/repository.ts";
+import { Entry, entries_with_date } from "./model/model";
+import { loadData, storeData } from "./model/repository";
 import Entries from "./components/Entries.vue";
 import { computed, ref, watchEffect } from "vue";
-import { Instant, LocalDate } from "@js-joda/core";
+import { Temporal } from "temporal-polyfill";
 
 const entryText = ref("");
-const entries = ref(loadData());
-const dateToDisplay = ref(LocalDate.now());
+const entries = ref<Entry[]>(loadData());
+const dateToDisplay = ref(Temporal.Now.plainDateISO());
 
 const displayedEntries = computed(() =>
-  entries_with_date(entries.value, dateToDisplay.value),
+  entries_with_date(entries.value, dateToDisplay.value)
 );
 
 watchEffect(() => storeData(entries.value));
 
-function saveEntry(e) {
+function saveEntry(e: Event) {
   const value = entryText.value.trim();
   if (value) {
     entries.value.push(Entry.now(entryText.value));
@@ -31,7 +31,7 @@ function saveEntry(e) {
   </header>
 
   <main>
-    <Inspiration />
+    <Inspiration :entries="entries" />
     <div>
       <input
         type="text"

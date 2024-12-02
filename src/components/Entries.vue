@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import Entry from "../model/model.ts";
-import { DateTimeFormatter, LocalDateTime } from "@js-joda/core";
+import { Entry } from "@/model/model";
+import { Temporal } from "temporal-polyfill";
+import { computed } from "vue";
 const props = defineProps<{ entries: Entry[] }>();
-
-const formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
 </script>
 
 <template>
@@ -12,7 +11,7 @@ const formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
       <tr v-for="entry of entries">
         <td>{{ entry.title }}</td>
         <td>
-          {{ LocalDateTime.ofInstant(entry.created_at).format(formatter) }}
+          {{ entry.created_at.toZonedDateTimeISO(Temporal.Now.timeZoneId()) }}
         </td>
       </tr>
     </tbody>
