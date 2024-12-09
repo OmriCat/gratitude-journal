@@ -16,7 +16,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "temporal-polyfill": "^0.2.5",
+    "temporal-polyfill": "0.2.5",
     "ts-results": "3.3.0",
     "vue": "3.4.27"
   },
