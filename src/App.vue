@@ -35,7 +35,7 @@ function saveEntry(e: Event) {
     <div>
       <input
         type="text"
-        v-model.lazy.trim="entryText"
+        v-model.trim="entryText"
         autofocus
         placeholder="What are you grateful for?"
         @keyup.enter="saveEntry"
