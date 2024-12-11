@@ -1,11 +1,9 @@
 import { Temporal } from "temporal-polyfill";
-import Instant = Temporal.Instant;
-import PlainDateTime = Temporal.PlainDateTime;
 
 export class Entry {
   title!: String;
   created_at: Temporal.Instant;
-  private constructor(title: String, created_at: Instant) {
+  private constructor(title: String, created_at: Temporal.Instant) {
     this.title = title;
     this.created_at = created_at;
   }
@@ -20,6 +18,6 @@ export function entries_with_date(
   date: Temporal.PlainDate
 ): Entry[] {
   return entries.filter((entry) =>
-    date.equals(entry.created_at.toZonedDateTimeISO('UTC'))
+    date.equals(entry.created_at.toZonedDateTimeISO("UTC"))
   );
 }
