@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Entry } from "@/model/model";
 import { Temporal } from "temporal-polyfill";
-import { computed } from "vue";
 const props = defineProps<{ entries: Entry[] }>();
 </script>
 

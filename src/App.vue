@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import Inspiration from "./components/Inspiration.vue";
 import { Entry, entries_with_date } from "./model/model";
-import { loadData, storeData } from "./model/repository";
+import { REPOSITORY_INJECTION_KEY } from "./model/repository";
 import Entries from "./components/Entries.vue";
-import { computed, ref, watchEffect } from "vue";
+import { computed, inject, ref, watchEffect } from "vue";
 import { Temporal } from "temporal-polyfill";
+import { shuffleArray } from "./model/util";
+
+const repository = inject(REPOSITORY_INJECTION_KEY)!;
 
 const entryText = ref("");
-const entries = ref<Entry[]>(loadData());
-const dateToDisplay = ref(Temporal.Now.plainDateISO());
+const entries = ref<Entry[]>(repository.loadData());
 
+const dateToDisplay = ref(Temporal.Now.plainDateISO());
 const displayedEntries = computed(() =>
   entries_with_date(entries.value, dateToDisplay.value)
 );
 
-watchEffect(() => storeData(entries.value));
+watchEffect(() => repository.storeData(entries.value));
 
 function saveEntry(e: Event) {
   const value = entryText.value.trim();
@@ -23,6 +26,9 @@ function saveEntry(e: Event) {
     entryText.value = "";
   }
 }
+
+// Deliberately non-reactive so this remains constant for each page load
+const entriesForInspiration = shuffleArray(entries.value).slice(0, 3);
 </script>
 
 <template>
@@ -31,7 +37,7 @@ function saveEntry(e: Event) {
   </header>
 
   <main>
-    <Inspiration :entries="entries" />
+    <Inspiration :entries="entriesForInspiration" />
     <div>
       <input
         type="text"
@@ -42,7 +48,7 @@ function saveEntry(e: Event) {
       />
       <button @click="saveEntry">Save</button>
     </div>
-    <Entries :entries="entries" />
+    <Entries :entries="displayedEntries" />
   </main>
 </template>
 
