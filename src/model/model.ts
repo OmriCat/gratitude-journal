@@ -1,14 +1,14 @@
 import { Temporal } from "temporal-polyfill";
 
 export class Entry {
-  title!: String;
+  title!: string;
   created_at: Temporal.Instant;
-  private constructor(title: String, created_at: Temporal.Instant) {
+  private constructor(title: string, created_at: Temporal.Instant) {
     this.title = title;
     this.created_at = created_at;
   }
 
-  static now(title: String): Entry {
+  static now(title: string): Entry {
     return new Entry(title, Temporal.Now.instant());
   }
 }

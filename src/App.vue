@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Inspiration from "./components/Inspiration.vue";
+import Inspiration from "./components/InspirationItems.vue";
 import { Entry, entries_with_date } from "./model/model";
 import { REPOSITORY_INJECTION_KEY } from "./model/repository";
-import Entries from "./components/Entries.vue";
+import Entries from "./components/TodaysEntries.vue";
 import { computed, inject, ref, watchEffect } from "vue";
 import { Temporal } from "temporal-polyfill";
-import { shuffleArray } from "./model/util";
+import { shuffleArray } from "./util";
 
 const repository = inject(REPOSITORY_INJECTION_KEY)!;
 
@@ -19,7 +19,7 @@ const displayedEntries = computed(() =>
 
 watchEffect(() => repository.storeData(entries.value));
 
-function saveEntry(e: Event) {
+function saveEntry() {
   const value = entryText.value.trim();
   if (value) {
     entries.value.push(Entry.now(entryText.value));

@@ -16,7 +16,7 @@ export interface Repository {
 
 export class LocalStorageRepository implements Repository {
   loadData(): Entry[] {
-    var data = localStorage.getItem(STORAGE_KEY);
+    let data = localStorage.getItem(STORAGE_KEY);
     if (data === "undefined") {
       data = "[]";
     }
