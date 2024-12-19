@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import Inspiration from "./components/InspirationItems.vue";
-import { Entry, entries_with_date } from "./model/model";
-import { REPOSITORY_INJECTION_KEY } from "./model/repository";
-import Entries from "./components/TodaysEntries.vue";
+import Inspiration from "@/components/InspirationItems.vue";
+import Entries from "@/components/TodaysEntries.vue";
+import { Entry, entries_with_date } from "@/model/model";
+import { REPOSITORY_INJECTION_KEY } from "@/model/repository";
 import { computed, inject, ref, watchEffect } from "vue";
 import { Temporal } from "temporal-polyfill";
-import { shuffleArray } from "./util";
+import { shuffleArray } from "@/util";
 
 const repository = inject(REPOSITORY_INJECTION_KEY)!;
 
