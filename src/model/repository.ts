@@ -1,6 +1,6 @@
 import { Temporal } from "temporal-polyfill";
 import Instant = Temporal.Instant;
-import type { Entry } from "./model";
+import type { Entry } from "@/model/model";
 import type { InjectionKey } from "vue";
 
 const STORAGE_KEY = "gratitude-journal";
