@@ -2,3 +2,4 @@ pre-commit:
   commands:
     no-commit-to-main:
       run: '[ "$(git rev-parse --abbrev-ref HEAD)" != "main" ]'
+      fail_text: 'Committing directly to "main" branch is not allowed!'
