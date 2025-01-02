@@ -32,7 +32,7 @@ const entriesForInspiration = shuffleArray(entries.value).slice(0, 3);
 </script>
 
 <template>
-  <header>
+  <header class="page-title">
     <h1>Gratitude Journal</h1>
   </header>
 
@@ -50,6 +50,8 @@ const entriesForInspiration = shuffleArray(entries.value).slice(0, 3);
     </div>
     <Entries :entries="displayedEntries" />
   </main>
+
+  <footer></footer>
 </template>
 
 <style scoped>
@@ -61,7 +63,6 @@ header {
   header {
     display: flex;
     place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
   }
 
   header .wrapper {

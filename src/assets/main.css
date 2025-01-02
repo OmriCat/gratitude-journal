@@ -1,5 +1,11 @@
 @import "./base.css";
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
@@ -22,13 +28,37 @@ a,
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
   #app {
-    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    gap: 8px;
     padding: 0 2rem;
   }
+
+  main {
+    border: 2px green;
+    flex: 1 1 auto;
+    min-height: fit-content;
+    padding: 4ex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+#app footer {
+  flex: 0 1 8ex;
+}
+
+#app header.page-title {
+  flex: 0 1 auto;
+  align-items: center;
+  margin: auto;
+}
+
+.page-title h1 {
+  font-weight: 600;
+  font-size: 4rem;
 }
