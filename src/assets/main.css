@@ -52,8 +52,13 @@ a,
   align-items: center;
 }
 
+#app main {
+  overflow-y: visible;
+}
+
 #app footer {
   flex: 0 1 8ex;
+  min-height: 4ex;
 }
 
 #app header.page-title {
