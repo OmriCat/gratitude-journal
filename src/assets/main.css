@@ -1,10 +1,19 @@
 @import "./base.css";
 
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
 #app {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 2rem;
+  /* padding: 2rem; */
   font-weight: normal;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
 }
 
 a,
@@ -22,13 +31,38 @@ a,
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
   #app {
-    grid-template-columns: 1fr 1fr;
+    gap: 8px;
     padding: 0 2rem;
   }
+}
+@media (min-height: 640px) {
+  html,
+  body {
+    overflow-y: hidden;
+  }
+}
+
+#app main {
+  flex: 1 1 auto;
+  min-height: fit-content;
+  padding: 4ex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#app footer {
+  flex: 0 1 8ex;
+}
+
+#app header.page-title {
+  flex: 0 1 auto;
+  align-items: center;
+  margin: auto;
+}
+
+.page-title h1 {
+  font-weight: 600;
+  font-size: 4rem;
 }
