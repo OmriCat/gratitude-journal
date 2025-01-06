@@ -39,3 +39,13 @@ jobs:
       - run: npm clean-install
       - run: npm run build-only
 
+  npm-check-format:
+    name: Check formatting with prettier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: actions/setup-node@8f9cc178b6e843639351e0bd5d638e5fd0a8dec7
+        with:
+          node-version-file: '.node-version'
+      - run: npm clean-install
+      - run: npm run check-format
