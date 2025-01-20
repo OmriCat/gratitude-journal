@@ -12,12 +12,11 @@
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --fix",
-    "format": "prettier --write src/"
+    "lint": "eslint . --fix"
   },
   "dependencies": {
     "temporal-polyfill": "0.2.5",
-    "ts-results": "3.3.0",
+    "ts-results-es": "^4.2.0",
     "vue": "3.4.27"
   },
   "devDependencies": {
@@ -41,7 +40,7 @@
     "start-server-and-test": "2.0.10",
     "typescript": "5.7.3",
     "vite": "6.0.9",
-    "vitest": "3.0.2",
-    "vue-tsc": "2.2.0"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "3.0.2"
   }
 }

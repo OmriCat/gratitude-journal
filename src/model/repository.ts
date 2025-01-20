@@ -6,7 +6,6 @@ import type { InjectionKey } from "vue";
 const STORAGE_KEY = "gratitude-journal";
 
 export const REPOSITORY_INJECTION_KEY: InjectionKey<Repository> = Symbol(
-  "repository"
 ) as InjectionKey<Repository>;
 
 export interface Repository {
