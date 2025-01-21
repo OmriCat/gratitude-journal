@@ -1,0 +1,41 @@
+name: pr-merge-queue.yml
+on:
+  workflow_dispatch:
+  merge_group:
+  pull_request:
+
+
+jobs:
+  npm-test:
+    name: NPM test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+        with:
+          node-version-file: '.node-version'
+      - run: npm clean-install
+      - run: npx vitest run
+
+  type-check:
+    name: Type check with vue-tsc
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+        with:
+          node-version-file: '.node-version'
+      - run: npm clean-install
+      - run: npx vue-tsc
+
+  npm-build-only:
+    name: Build with NPM
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af
+        with:
+          node-version-file: '.node-version'
+      - run: npm clean-install
+      - run: npm run build-only
+
