@@ -12,7 +12,9 @@
     "test:e2e:dev": "start-server-and-test 'vite dev --port 4173' http://localhost:4173 'cypress open --e2e'",
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
-    "lint": "eslint . --fix"
+    "lint": "eslint . --fix",
+    "check-format": "prettier --check src tests",
+    "format": "prettier --write src/ --write tests/"
   },
   "dependencies": {
     "temporal-polyfill": "0.2.5",
