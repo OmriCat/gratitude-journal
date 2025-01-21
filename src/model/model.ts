@@ -15,7 +15,9 @@ export class Entry {
 
 export function entries_with_date(
   entries: Entry[],
+  date: Temporal.PlainDate,
 ): Entry[] {
   return entries.filter((entry) =>
+    date.equals(entry.created_at.toZonedDateTimeISO("UTC")),
   );
 }

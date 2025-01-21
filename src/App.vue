@@ -14,6 +14,7 @@ const entries = ref<Entry[]>(repository.loadData());
 
 const dateToDisplay = ref(Temporal.Now.plainDateISO());
 const displayedEntries = computed(() =>
+  entries_with_date(entries.value, dateToDisplay.value),
 );
 
 watchEffect(() => repository.storeData(entries.value));
