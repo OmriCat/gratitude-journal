@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - uses: actions/setup-node@111c4beff82d35f6cda1048b03ca97416b4827da
+      - uses: actions/setup-node@574f09a9fa0c028c06ee94033784a2f5488c1735
         with:
           node-version-file: '.node-version'
       - run: npm clean-install
@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - uses: actions/setup-node@111c4beff82d35f6cda1048b03ca97416b4827da
+      - uses: actions/setup-node@574f09a9fa0c028c06ee94033784a2f5488c1735
         with:
           node-version-file: '.node-version'
       - run: npm clean-install
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - uses: actions/setup-node@111c4beff82d35f6cda1048b03ca97416b4827da
+      - uses: actions/setup-node@574f09a9fa0c028c06ee94033784a2f5488c1735
         with:
           node-version-file: '.node-version'
       - run: npm clean-install
@@ -44,7 +44,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - uses: actions/setup-node@111c4beff82d35f6cda1048b03ca97416b4827da
+      - uses: actions/setup-node@574f09a9fa0c028c06ee94033784a2f5488c1735
         with:
           node-version-file: '.node-version'
       - run: npm clean-install
