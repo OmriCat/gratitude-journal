@@ -1,8 +1,9 @@
 import { Temporal } from "temporal-polyfill";
 
 export class Entry {
-  title!: string;
-  created_at: Temporal.Instant;
+  readonly title!: string;
+  readonly created_at: Temporal.Instant;
+
   private constructor(title: string, created_at: Temporal.Instant) {
     this.title = title;
     this.created_at = created_at;
