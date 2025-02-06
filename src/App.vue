@@ -1,11 +1,12 @@
 <script lang="ts" setup>
 import Inspiration from "@/components/InspirationItems.vue";
 import Entries from "@/components/TodaysEntries.vue";
-import { Entry, entries_with_date } from "@/model/model";
+import { entries_with_date, Entry } from "@/model/model";
 import { REPOSITORY_INJECTION_KEY, type Repository } from "@/model/repository";
 import { shuffleArray, throwError } from "@/util";
 import { Temporal } from "temporal-polyfill";
 import { computed, inject, ref, watchEffect } from "vue";
+import Header from "@/components/Header.vue";
 
 const repository: Repository =
   inject(REPOSITORY_INJECTION_KEY) ?? throwError("Failure to get repository");
@@ -33,9 +34,7 @@ const entriesForInspiration = shuffleArray(entries.value).slice(0, 3);
 </script>
 
 <template>
-  <header class="page-title">
-    <h1>Gratitude Journal</h1>
-  </header>
+  <Header />
 
   <main>
     <Inspiration :entries="entriesForInspiration" />
@@ -54,21 +53,3 @@ const entriesForInspiration = shuffleArray(entries.value).slice(0, 3);
 
   <footer></footer>
 </template>
-
-<style scoped>
-header {
-  line-height: 1.5;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-  }
-
-  header .wrapper {
-    display: flex;
-    flex-wrap: wrap;
-  }
-}
-</style>

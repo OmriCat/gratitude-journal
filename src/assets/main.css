@@ -2,72 +2,70 @@
 
 html,
 body {
-  height: 100%;
-  margin: 0;
+    height: 100%;
+    margin: 0;
 }
 
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  /* padding: 2rem; */
-  font-weight: normal;
-  height: 100%;
-  display: flex;
-  flex-flow: column;
+    max-width: 1280px;
+    margin: 0 auto;
+    /* padding: 2rem; */
+    font-weight: normal;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
 }
 
 a,
 .green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+    text-decoration: none;
+    color: hsla(160, 100%, 37%, 1);
+    transition: 0.4s;
+    padding: 3px;
 }
 
 @media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
+    a:hover {
+        background-color: hsla(160, 100%, 37%, 0.2);
+    }
 }
 
 @media (min-width: 1024px) {
-  #app {
-    gap: 8px;
-    padding: 0 2rem;
-  }
+    #app {
+        gap: 8px;
+        padding: 0 2rem;
+    }
 }
+
 @media (min-height: 640px) {
-  html,
-  body {
-    overflow-y: hidden;
-  }
+    html,
+    body {
+        overflow-y: hidden;
+    }
 }
 
 #app main {
-  flex: 1 1 auto;
-  min-height: fit-content;
-  padding: 4ex;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex: 1 1 auto;
+    min-height: fit-content;
+    padding: 4ex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #app main {
-  overflow-y: visible;
+    overflow-y: visible;
 }
 
 #app footer {
-  flex: 0 1 8ex;
-  min-height: 4ex;
+    flex: 0 1 8ex;
+    min-height: 4ex;
 }
 
 #app header.page-title {
-  flex: 0 1 auto;
-  align-items: center;
-  margin: auto;
+    flex: 0 1 auto;
+    align-items: center;
+    margin: auto;
 }
 
-.page-title h1 {
-  font-weight: 600;
-  font-size: 4rem;
-}
+
