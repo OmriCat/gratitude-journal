@@ -1,7 +1,7 @@
+import { TimeAgoError, timeAgoString } from "@/human-time-ago.ts";
 import { Temporal } from "temporal-polyfill";
 import type { Result } from "ts-results-es";
 import { Err, Ok } from "ts-results-es";
-import { TimeAgoError, timeAgoString } from "@/human-time-ago.ts";
 import { expect, test } from "vitest";
 
 const FIXED_DATE = Temporal.ZonedDateTime.from("2025-01-01T12:00[UTC]");
@@ -9,7 +9,7 @@ const FIXED_DATE = Temporal.ZonedDateTime.from("2025-01-01T12:00[UTC]");
 type TestCase = {
   later: Temporal.ZonedDateTime;
   earlier: Temporal.ZonedDateTime;
-  expected: Result<String, TimeAgoError>;
+  expected: Result<string, TimeAgoError>;
   message: string;
 };
 

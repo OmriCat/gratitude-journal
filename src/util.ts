@@ -1,7 +1,15 @@
 export function shuffleArray<T>(array: T[]): T[] {
-  const shuffled = array
+  return array
     .map((value) => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
-  return shuffled;
+}
+
+export function throwError(message: string): never;
+export function throwError(error: Error): never;
+export function throwError(errOrMessage: string | Error): never {
+  if (typeof errOrMessage === "string") {
+    throw new Error(errOrMessage);
+  }
+  throw errOrMessage;
 }

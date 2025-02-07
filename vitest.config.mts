@@ -1,9 +1,9 @@
 /// <reference types="vitest" />
 
 import { fileURLToPath } from "node:url";
-import { mergeConfig, defineConfig, configDefaults } from "vitest/config";
-import viteConfig from "./vite.config";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { configDefaults, defineConfig, mergeConfig } from "vitest/config";
+import viteConfig from "./vite.config";
 
 export default mergeConfig(
   viteConfig,
@@ -15,5 +15,5 @@ export default mergeConfig(
       include: ["./tests/**/*.{test,spec}.{js,ts,jsx,tsx}"],
     },
     plugins: [tsconfigPaths()],
-  })
+  }),
 );

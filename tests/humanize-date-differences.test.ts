@@ -1,12 +1,12 @@
-import { expect, test } from "vitest";
-import { Temporal } from "temporal-polyfill";
 import {
-  timeAgo,
   type TimeAgo,
   TimeAgoError,
   TimeAgoKind,
+  timeAgo,
 } from "@/human-time-ago";
+import { Temporal } from "temporal-polyfill";
 import { Err, Ok, type Result } from "ts-results-es";
+import { expect, test } from "vitest";
 
 const FIXED_DATE = Temporal.ZonedDateTime.from("2025-01-01T12:00[UTC]");
 
@@ -29,14 +29,12 @@ function zdt(
   earlier: Temporal.ZonedDateTimeLike | string,
   expected: Result<TimeAgo, TimeAgoError>,
 ): TestCase {
-  const toString = (obj: TimeAgo | TimeAgoError) =>
-    "{" +
-    Object.entries(obj)
+  const objectString = (obj: TimeAgo | TimeAgoError) =>
+    `{${Object.entries(obj)
       .map(([k, v]) => `${k}: ${v}`)
-      .join(", ") +
-    "}";
+      .join(", ")}}`;
   const expectedMessage = expected.isOk()
-    ? toString(expected.value)
+    ? objectString(expected.value)
     : expected.error.toString();
   return {
     later: Temporal.PlainDateTime.from(later).toZonedDateTime("UTC"),

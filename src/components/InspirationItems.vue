@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Entry } from "@/model/model";
+import type { Entry } from "@/model/model";
 
 const { entries } = defineProps<{ entries: Entry[] }>();
 </script>
