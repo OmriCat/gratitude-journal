@@ -1,6 +1,8 @@
 import type { Entry } from "@/model/model";
+import { throwError } from "@/util.ts";
 import { Temporal } from "temporal-polyfill";
 import type { InjectionKey } from "vue";
+import { inject } from "vue";
 import Instant = Temporal.Instant;
 
 const STORAGE_KEY = "gratitude-journal";
@@ -12,6 +14,12 @@ export const REPOSITORY_INJECTION_KEY: InjectionKey<Repository> = Symbol(
 export interface Repository {
   loadData(): Entry[];
   storeData(entries: Entry[]): void;
+}
+
+export function accessRepository(): Repository {
+  return (
+    inject(REPOSITORY_INJECTION_KEY) ?? throwError("Unable to load repository")
+  );
 }
 
 export class LocalStorageRepository implements Repository {

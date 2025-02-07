@@ -36,6 +36,7 @@ a,
     padding: 0 2rem;
   }
 }
+
 @media (min-height: 640px) {
   html,
   body {
@@ -67,7 +68,8 @@ a,
   margin: auto;
 }
 
-.page-title h1 {
-  font-weight: 600;
-  font-size: 4rem;
+#app nav {
+  flex: 0 1 auto;
+  align-items: center;
+  margin: auto;
 }
