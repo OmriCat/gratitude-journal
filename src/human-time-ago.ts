@@ -15,7 +15,7 @@ export function timeAgoString(
   switch (value.kind) {
     case TimeAgoKind.Minutes:
       if (value.minutes < 1) return Ok("Just now");
-      else return Ok(`${pluralUnits("minute", value.minutes)} ago`);
+      return Ok(`${pluralUnits("minute", value.minutes)} ago`);
     case TimeAgoKind.Hours:
       return Ok(`${pluralUnits("hour", value.hours)} ago`);
     case TimeAgoKind.Days:
@@ -36,16 +36,16 @@ export function timeAgoString(
 
 function pluralUnits(unit: string, value: number): string {
   if (value > 1) return `${value} ${unit}s`;
-  else return `1 ${unit}`;
+  return `1 ${unit}`;
 }
 
 export enum TimeAgoKind {
-  YearsAndMonths,
-  Months,
-  Weeks,
-  Days,
-  Hours,
-  Minutes,
+  YearsAndMonths = 0,
+  Months = 1,
+  Weeks = 2,
+  Days = 3,
+  Hours = 4,
+  Minutes = 5,
 }
 
 export type TimeAgo =

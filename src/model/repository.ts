@@ -1,7 +1,7 @@
-import { Temporal } from "temporal-polyfill";
-import Instant = Temporal.Instant;
 import type { Entry } from "@/model/model";
+import { Temporal } from "temporal-polyfill";
 import type { InjectionKey } from "vue";
+import Instant = Temporal.Instant;
 
 const STORAGE_KEY = "gratitude-journal";
 
@@ -16,18 +16,14 @@ export interface Repository {
 
 export class LocalStorageRepository implements Repository {
   loadData(): Entry[] {
-    let data = localStorage.getItem(STORAGE_KEY);
-    if (data === "undefined") {
-      data = "[]";
-    }
-    const parsed = JSON.parse(data || "[]", (key, value) => {
+    const data: string = localStorage.getItem(STORAGE_KEY) ?? "";
+
+    return JSON.parse(data || "[]", (key, value) => {
       if (key === "created_at" && typeof value === "string") {
         return Instant.from(value);
-      } else {
-        return value;
       }
+      return value;
     });
-    return parsed;
   }
 
   storeData(entries: Entry[]): void {

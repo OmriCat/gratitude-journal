@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Entry } from "@/model/model";
+import type { Entry } from "@/model/model";
 import { Temporal } from "temporal-polyfill";
 import { timeAgoString } from "../human-time-ago.ts";
 
@@ -8,7 +8,7 @@ const { entries } = defineProps<{ entries: Entry[] }>();
 function showTimeAgoString(zdt: Temporal.ZonedDateTime): string {
   const timeAgoResult = timeAgoString(Temporal.Now.zonedDateTimeISO(), zdt);
   if (timeAgoResult.isOk()) return timeAgoResult.value;
-  else return "Unable to show when this entry was created!";
+  return "Unable to show when this entry was created!";
 }
 </script>
 

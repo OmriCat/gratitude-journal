@@ -1,13 +1,14 @@
-<script setup lang="ts">
+<script lang="ts" setup>
 import Inspiration from "@/components/InspirationItems.vue";
 import Entries from "@/components/TodaysEntries.vue";
 import { Entry, entries_with_date } from "@/model/model";
-import { REPOSITORY_INJECTION_KEY } from "@/model/repository";
-import { computed, inject, ref, watchEffect } from "vue";
+import { REPOSITORY_INJECTION_KEY, type Repository } from "@/model/repository";
+import { shuffleArray, throwError } from "@/util";
 import { Temporal } from "temporal-polyfill";
-import { shuffleArray } from "@/util";
+import { computed, inject, ref, watchEffect } from "vue";
 
-const repository = inject(REPOSITORY_INJECTION_KEY)!;
+const repository: Repository =
+  inject(REPOSITORY_INJECTION_KEY) ?? throwError("Failure to get repository");
 
 const entryText = ref("");
 const entries = ref<Entry[]>(repository.loadData());
@@ -40,10 +41,10 @@ const entriesForInspiration = shuffleArray(entries.value).slice(0, 3);
     <Inspiration :entries="entriesForInspiration" />
     <div>
       <input
-        type="text"
         v-model.trim="entryText"
         autofocus
         placeholder="What are you grateful for?"
+        type="text"
         @keyup.enter="saveEntry"
       />
       <button @click="saveEntry">Save</button>
