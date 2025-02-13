@@ -10,14 +10,14 @@ import { computed, ref, watchEffect } from "vue";
 const repository = accessRepository();
 
 const entryText = ref("");
-const entries = ref<Entry[]>(repository.loadData());
+const entries = ref<Entry[]>(await repository.loadData());
 
 const dateToDisplay = ref(Temporal.Now.plainDateISO());
 const displayedEntries = computed(() =>
   entries_with_date(entries.value, dateToDisplay.value),
 );
 
-watchEffect(() => repository.storeData(entries.value));
+watchEffect(async () => await repository.storeData(entries.value));
 
 function saveEntry() {
   const value = entryText.value.trim();
@@ -32,16 +32,17 @@ const entriesForInspiration = shuffleArray(entries.value).slice(0, 3);
 </script>
 
 <template>
-  <InspirationItems :entries="entriesForInspiration" />
-  <div>
-    <input
-      v-model.trim="entryText"
-      autofocus
-      placeholder="What are you grateful for?"
-      type="text"
-      @keyup.enter="saveEntry"
-    />
-    <button @click="saveEntry">Save</button>
-  </div>
-  <SimpleEntriesList :entries="displayedEntries" />
+
+    <InspirationItems :entries="entriesForInspiration" />
+    <div>
+      <input
+        v-model.trim="entryText"
+        autofocus
+        placeholder="What are you grateful for?"
+        type="text"
+        @keyup.enter="saveEntry"
+      />
+      <button @click="saveEntry">Save</button>
+    </div>
+    <SimpleEntriesList :entries="displayedEntries" />
 </template>
