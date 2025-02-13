@@ -6,7 +6,7 @@ import { computed, ref } from "vue";
 import { timeAgoString } from "../human-time-ago.ts";
 
 const repository = accessRepository();
-const entries = ref<Array<Entry>>(repository.loadData());
+const entries = ref<Array<Entry>>(await repository.loadData());
 const sortedEntries = computed(() =>
   entries.value.sort((first, second) =>
     Temporal.Instant.compare(second.created_at, first.created_at),

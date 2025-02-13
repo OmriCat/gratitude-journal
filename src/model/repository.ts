@@ -12,8 +12,9 @@ export const REPOSITORY_INJECTION_KEY: InjectionKey<Repository> = Symbol(
 ) as InjectionKey<Repository>;
 
 export interface Repository {
-  loadData(): Entry[];
-  storeData(entries: Entry[]): void;
+  loadData(): Promise<Entry[]>;
+
+  storeData(entries: Entry[]): Promise<void>;
 }
 
 export function accessRepository(): Repository {
@@ -23,19 +24,23 @@ export function accessRepository(): Repository {
 }
 
 export class LocalStorageRepository implements Repository {
-  loadData(): Entry[] {
-    const data: string = localStorage.getItem(STORAGE_KEY) ?? "";
-
-    return JSON.parse(data || "[]", (key, value) => {
-      if (key === "created_at" && typeof value === "string") {
-        return Instant.from(value);
-      }
-      return value;
+  async loadData(): Promise<Entry[]> {
+    return new Promise((resolve, reject) => {
+      const data: string = localStorage.getItem(STORAGE_KEY) ?? "";
+      const parsed = JSON.parse(data || "[]", (key, value) => {
+        if (key === "created_at" && typeof value === "string") {
+          return Instant.from(value);
+        }
+        return value;
+      });
+      resolve(parsed);
     });
   }
 
-  storeData(entries: Entry[]): void {
-    const json = JSON.stringify(entries);
-    localStorage.setItem(STORAGE_KEY, json);
+  async storeData(entries: Entry[]): Promise<void> {
+    return new Promise(() => {
+      const json = JSON.stringify(entries);
+      localStorage.setItem(STORAGE_KEY, json);
+    });
   }
 }
