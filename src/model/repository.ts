@@ -1,8 +1,9 @@
-import type { Entry } from "@/model/model";
-import { throwError } from "@/util.ts";
 import { Temporal } from "temporal-polyfill";
 import type { InjectionKey } from "vue";
 import { inject } from "vue";
+import type { Entry } from "@/model/model";
+import { throwError } from "@/util.ts";
+
 import Instant = Temporal.Instant;
 
 const STORAGE_KEY = "gratitude-journal";
@@ -25,7 +26,7 @@ export function accessRepository(): Repository {
 
 export class LocalStorageRepository implements Repository {
   async loadData(): Promise<Entry[]> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve, _reject) => {
       const data: string = localStorage.getItem(STORAGE_KEY) ?? "";
       const parsed = JSON.parse(data || "[]", (key, value) => {
         if (key === "created_at" && typeof value === "string") {
