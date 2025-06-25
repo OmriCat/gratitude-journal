@@ -1,10 +1,10 @@
 import "./assets/main.css";
 
+import { createApp } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
 import App from "@/App.vue";
 import Entries from "@/routes/Entries.vue";
 import Home from "@/routes/Home.vue";
-import { createApp } from "vue";
-import { createRouter, createWebHistory } from "vue-router";
 import {
   LocalStorageRepository,
   REPOSITORY_INJECTION_KEY,

@@ -1,8 +1,8 @@
 <script lang="ts" setup>
-import type { Entry } from "@/model/model";
-import { accessRepository } from "@/model/repository.ts";
 import { Temporal } from "temporal-polyfill";
 import { computed, ref } from "vue";
+import type { Entry } from "@/model/model";
+import { accessRepository } from "@/model/repository.ts";
 import { timeAgoString } from "../human-time-ago.ts";
 
 const repository = accessRepository();

@@ -1,12 +1,12 @@
+import { Temporal } from "temporal-polyfill";
+import { Err, Ok, type Result } from "ts-results-es";
+import { expect, test } from "vitest";
 import {
   type TimeAgo,
   TimeAgoError,
   TimeAgoKind,
   timeAgo,
 } from "@/human-time-ago";
-import { Temporal } from "temporal-polyfill";
-import { Err, Ok, type Result } from "ts-results-es";
-import { expect, test } from "vitest";
 
 const FIXED_DATE = Temporal.ZonedDateTime.from("2025-01-01T12:00[UTC]");
 

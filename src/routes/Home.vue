@@ -1,11 +1,11 @@
 <script lang="ts" setup>
+import { Temporal } from "temporal-polyfill";
+import { computed, ref, watchEffect } from "vue";
 import InspirationItems from "@/components/InspirationItems.vue";
 import SimpleEntriesList from "@/components/SimpleEntriesList.vue";
 import { Entry, entries_with_date } from "@/model/model.ts";
 import { accessRepository } from "@/model/repository.ts";
 import { shuffleArray } from "@/util.ts";
-import { Temporal } from "temporal-polyfill";
-import { computed, ref, watchEffect } from "vue";
 
 const repository = accessRepository();
 

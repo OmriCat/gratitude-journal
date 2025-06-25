@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import type { Entry } from "@/model/model";
 import { Temporal } from "temporal-polyfill";
+import type { Entry } from "@/model/model";
 import { timeAgoString } from "../human-time-ago.ts";
 
 const { entries } = defineProps<{ entries: Entry[] }>();
