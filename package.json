@@ -21,7 +21,7 @@
     "temporal-polyfill": "0.2.5",
     "ts-results-es": "6.0.0",
     "vue": "3.5.22",
-    "vue-router": "4.6.0"
+    "vue-router": "4.6.3"
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.6",
