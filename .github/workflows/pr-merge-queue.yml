@@ -10,7 +10,7 @@ jobs:
     name: NPM test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - uses: actions/setup-node@b9b25d45f70a5d94d88496aa4896bf9ed8f49b67
         with:
           node-version-file: '.node-version'
@@ -21,7 +21,7 @@ jobs:
     name: Type check with vue-tsc
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - uses: actions/setup-node@b9b25d45f70a5d94d88496aa4896bf9ed8f49b67
         with:
           node-version-file: '.node-version'
@@ -32,7 +32,7 @@ jobs:
     name: Build with NPM
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - uses: actions/setup-node@b9b25d45f70a5d94d88496aa4896bf9ed8f49b67
         with:
           node-version-file: '.node-version'
@@ -43,7 +43,7 @@ jobs:
     name: Check formatting, lint, and import sorting with biome
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6
+      - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6
       - uses: actions/setup-node@b9b25d45f70a5d94d88496aa4896bf9ed8f49b67
         with:
           node-version-file: '.node-version'
