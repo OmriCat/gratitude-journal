@@ -24,7 +24,7 @@
     "vue-router": "4.6.4"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.3.8",
+    "@biomejs/biome": "2.3.9",
     "@rushstack/eslint-patch": "1.15.0",
     "@tsconfig/node20": "20.1.8",
     "@types/jsdom": "27.0.0",
