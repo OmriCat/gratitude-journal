@@ -106,14 +106,25 @@ export function timeAgo(
     earlier: Temporal.ZonedDateTime,
   ) => TimeAgo | null {
     return (later: Temporal.ZonedDateTime, earlier: Temporal.ZonedDateTime) => {
-      const roundingOptions: Temporal.DurationRoundTo = {
+      const roundingUnits: Temporal.DurationRoundTo = {
         smallestUnit: units.smallestUnit ?? units.largestUnit,
         largestUnit: units.largestUnit,
         roundingMode: "trunc",
-        relativeTo: later,
       };
 
-      const rounded = computeDuration(later, earlier).round(roundingOptions);
+      // Only include relativeTo in rounding options when we're rounding to a calendar unit
+      const roundingOptions: Temporal.DurationRoundTo =
+        units.largestUnit === "year" ||
+        units.largestUnit === "month" ||
+        units.largestUnit === "week"
+          ? {
+              ...roundingUnits,
+              relativeTo: later,
+            }
+          : roundingUnits;
+
+      const duration = computeDuration(later, earlier);
+      const rounded = duration.round(roundingOptions);
       return Temporal.Duration.compare(rounded, compareTo, {
         relativeTo: later,
       }) >= 0
