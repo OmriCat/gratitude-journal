@@ -3,6 +3,7 @@
   "extends": [
     "config:best-practices",
     "config:js-app",
-    "group:vueMonorepo"
+    "group:vueMonorepo",
+    "customManagers:biomeVersions",
   ]
 }
