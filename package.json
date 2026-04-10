@@ -39,7 +39,7 @@
     "eslint": "10.2.0",
     "eslint-plugin-cypress": "6.2.2",
     "eslint-plugin-vue": "10.8.0",
-    "jsdom": "29.0.1",
+    "jsdom": "29.0.2",
     "npm-run-all2": "8.0.4",
     "start-server-and-test": "3.0.0",
     "typescript": "5.9.3",
