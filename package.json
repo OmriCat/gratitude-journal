@@ -27,7 +27,7 @@
     "@biomejs/biome": "2.4.15",
     "@rushstack/eslint-patch": "1.16.1",
     "@tsconfig/node24": "24.0.4",
-    "@types/jsdom": "28.0.2",
+    "@types/jsdom": "28.0.3",
     "@types/node": "24.12.3",
     "@vitejs/plugin-vue": "6.0.6",
     "@vitest/eslint-plugin": "1.6.17",
