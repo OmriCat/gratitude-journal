@@ -18,7 +18,7 @@
     "format": "biome format --write"
   },
   "dependencies": {
-    "temporal-polyfill": "0.3.2",
+    "temporal-polyfill": "1.0.1",
     "ts-results-es": "7.0.0",
     "vue": "3.5.33",
     "vue-router": "5.0.6"
