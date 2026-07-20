@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "temporal-polyfill": "1.0.1",
-    "ts-results-es": "7.0.0",
+    "ts-results-es": "7.1.0",
     "vue": "3.5.38",
     "vue-router": "5.0.6"
   },
